@@ -1,4 +1,14 @@
 .page {
+	margin: 0;
+
+	background-color: #f2f2f2;
+	color: $text-color;
+
+	font-family: $font-family;
+	font-size: $text-size;
+	text-transform: uppercase;
+	line-height: $text-line;
 
 	@import "elements/_wrap";
+	@import "modifiers/_wrap--shadow";
 }
