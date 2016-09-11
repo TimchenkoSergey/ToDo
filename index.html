@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html ng-app="ToDo" lang="ru">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +8,7 @@
 	<title>ToDo</title>
 
 	<link href="css/main.min.css" rel="stylesheet">
+	<script src="js/angular.min.js"></script>
 
 	<!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -15,6 +16,57 @@
     <![endif]-->
 </head>
 <body class="page">
-	
+	<div class="page__wrap">
+		<header class="header">
+			<div class="login">
+				<form class="login__form" action="#">
+					<input  class="login__name" type="text" name="name">
+					<button class="login__button">Войти</button>
+				</form>
+			</div>
+			<div class="statistics">
+				<div class="statistics__user">
+					<img class="statistics__image" src="" alt="User">
+				</div>
+				<div class="statistics__line">
+					<div class="statistics__progress">
+						<span class="statistics__percent"></span>
+					</div>
+				</div>
+			</div>
+		</header>
+		<main class="main-content">
+			<div class="main-content__switch">
+				<button class="main-content__button">Невыполненные</button>
+				<button class="main-content__button">Выполненные</button>
+			</div>
+			<div class="tasks">
+				<form class="tasks__form" action="#">
+					<input class="tasks__add-task" type="text">
+					<button class="tasks__button">Добавить</button>
+				</form>
+				<div class="tasks__item">
+					<p class="tasks__description">
+						
+					</p>
+					<button class="tasks__button">Выполнено</button>
+					<button class="tasks__button">Удалить</button>
+				</div>
+			</div>
+			<div class="completed-tasks">
+				<div class="completed-tasks__item">
+					<p class="completed-tasks__description">
+						
+					</p>
+					<button class="completed-tasks__button">Удалить</button>
+				</div>
+			</div>
+		</main>
+		<footer class="footer">
+			<div class="author">
+				Автор
+			</div>
+		</footer>
+	</div>
 </body>
 </html>
