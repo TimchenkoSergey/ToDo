@@ -1,0 +1,18 @@
+&__button {
+	height: 39px;
+	padding-left: 25px;
+	padding-right: 25px;
+
+	border: none;
+
+	background-color: $bg-input-color;
+
+	text-transform: uppercase;
+	font-weight: bold;
+
+	cursor: pointer;
+
+	&:hover {
+		background-color: #ACA8A8;
+	}
+}
