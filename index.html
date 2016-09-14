@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" ng-app="toDo">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,21 +10,18 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Vast+Shadow" rel="stylesheet">
 	<link href="css/main.min.css" rel="stylesheet">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<script src="js/main.min.js"></script>
 
 	<!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="page">
+<body class="page" ng-controller="taskCtrl">
 	<div class="page__wrap page__wrap--shadow">
 		<header class="header">
-			<div class="login">
-				<form class="login__form" action="#">
-					<input  class="login__name" type="text" name="name" placeholder="Введите имя">
-					<button class="login__button">Войти</button>
-				</form>
-			</div>
 			<div class="statistics">
 				<div class="statistics__user">
 					<svg class="statistics__image" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 380 402.5">
@@ -36,39 +33,34 @@
 						<path class="statistics__path a" d="M189 34.2l0.3 83.5 39.5 82.7h-39.8l-0.1 34.6 55 0.1 25.7 59.5 41.8 0.8L189 34.2z"/>
 					</svg>
 				</div>
-				<div class="statistics__line">
-					<div class="statistics__progress">
-						<span class="statistics__percent"></span>
-					</div>
-				</div>
 			</div>
 		</header>
 		<main class="main-content">
 			<div class="main-content__switch">
-				<button class="main-content__button">Невыполненные</button>
-				<button class="main-content__button">Выполненные</button>
+				<button class="main-content__button" ng-click=showToDo()>Невыполненные</button>
+				<button class="main-content__button" ng-click=showDone()>Выполненные</button>
 			</div>
 			<div class="tasks">
 				<form class="tasks__form" action="#">
-					<input class="tasks__add-task" type="text">
-					<button class="tasks__button">Добавить</button>
+					<input class="tasks__add-task" ng-model="text">
+					<button class="tasks__button" ng-click=addTask()>Добавить</button>
 				</form>
-				<div class="tasks__item">
+				<div class="tasks__item" ng-repeat="item in todoTasks" ng-if="showToDoTasks">
 					<p class="tasks__description">
-						
+						{{item.text}}
 					</p>
 					<div class="tasks__controls">
-						<button class="tasks__button">Выполнено</button>
-						<button class="tasks__button">Удалить</button>
+						<button class="tasks__button" ng-click=doneTask($index)>Выполнено</button>
+						<button class="tasks__button" ng-click="deleteTask($index, item)">Удалить</button>
 					</div>
 				</div>
 			</div>
-			<div class="completed-tasks">
+			<div class="completed-tasks" ng-repeat="item in doneTasks" ng-if="showDoneTasks">
 				<div class="completed-tasks__item">
 					<p class="completed-tasks__description">
-						
+						{{item.text}}
 					</p>
-					<button class="completed-tasks__button">Удалить</button>
+					<button class="completed-tasks__button" ng-click="deleteTask($index, item)">Удалить</button>
 				</div>
 			</div>
 		</main>
@@ -78,7 +70,5 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/angular.min.js"></script>
-	<script src="js/main.min.js"></script>
 </body>
 </html>

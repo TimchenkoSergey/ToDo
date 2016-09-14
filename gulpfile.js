@@ -4,9 +4,7 @@ const gulp    = require("gulp"),
 	  minify  = require("gulp-minify-css"),
 	  prefix  = require("gulp-autoprefixer"),
 	  sass    = require("gulp-sass"),
-	  rename  = require("gulp-rename"),
-	  babel   = require('gulp-babel'),
-	  uglify  = require('gulp-uglify');
+	  rename  = require("gulp-rename");
 
 gulp.task("css", function() {
 	gulp.src("scss/main.scss")
@@ -19,8 +17,6 @@ gulp.task("css", function() {
 
 gulp.task("js", function() {
 	gulp.src("js/app/main.js")
-	.pipe(babel({presets: ["es2015"]}))
-	.pipe(uglify())
 	.pipe(rename("main.min.js"))
 	.pipe(gulp.dest("js/"));
 });
