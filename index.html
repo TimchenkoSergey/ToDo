@@ -55,7 +55,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="completed-tasks" ng-repeat="item in doneTasks" ng-if="!showToDoTasks">
+			<div class="completed-tasks" ng-repeat="item in doneTasks" ng-if="showDoneTasks">
 				<div class="completed-tasks__item">
 					<p class="completed-tasks__description">
 						{{item.text}}

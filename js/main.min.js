@@ -5,14 +5,17 @@ let app = angular.module("toDo", []);
 app.controller("taskCtrl", function($scope) {
 	$scope.doneTasks = [];
 	$scope.todoTasks = [];
-	$scope.showToDoTasks = false;
+	$scope.showToDoTasks = true;
+	$scope.showDoneTasks = false;
 
 	$scope.showToDo = function() {
 		$scope.showToDoTasks = true;
+		$scope.showDoneTasks = false;
 	};
 
 	$scope.showDone = function() {
 		$scope.showToDoTasks = false;
+		$scope.showDoneTasks = true;
 	};
 
 	$scope.addTask = function() {
