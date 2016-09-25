@@ -37,15 +37,15 @@
 		</header>
 		<main class="main-content">
 			<div class="main-content__switch">
-				<button class="main-content__button" ng-click=showToDo()>Невыполненные</button>
-				<button class="main-content__button" ng-click=showDone()>Выполненные</button>
+				<button class="main-content__button" ng-click=showToggle()>Невыполненные</button>
+				<button class="main-content__button" ng-click=showToggle()>Выполненные</button>
 			</div>
-			<div class="tasks">
+			<div class="tasks" ng-show="showToDoTasks">
 				<form class="tasks__form" action="#">
 					<input class="tasks__add-task" ng-model="text">
 					<button class="tasks__button" ng-click=addTask()>Добавить</button>
 				</form>
-				<div class="tasks__item" ng-repeat="item in todoTasks" ng-if="showToDoTasks">
+				<div class="tasks__item" ng-repeat="item in todoTasks">
 					<p class="tasks__description">
 						{{item.text}}
 					</p>
@@ -55,7 +55,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="completed-tasks" ng-repeat="item in doneTasks" ng-if="showDoneTasks">
+			<div class="completed-tasks" ng-repeat="item in doneTasks" ng-hide="showToDoTasks">
 				<div class="completed-tasks__item">
 					<p class="completed-tasks__description">
 						{{item.text}}
